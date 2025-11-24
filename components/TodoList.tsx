@@ -26,13 +26,16 @@ export default function TodoList() {
 
 	//* Create
 	const createTodo = async () => {
-		const newTodo = {
-			text: Inpvalue,
-			completed: false,
-		};
+		if (Inpvalue != "") {
+			const newTodo = {
+				text: Inpvalue,
+				completed: false,
+			};
 
-		await api.post("/todolist", newTodo);
-		await getTodos();
+			await api.post("/todolist", newTodo);
+			await getTodos();
+			setInpValue("");
+		}
 	};
 
 	//* Complete
